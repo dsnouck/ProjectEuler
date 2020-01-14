@@ -13,16 +13,15 @@ namespace ProjectEuler.Problems
         /// <inheritdoc/>
         public string Solve()
         {
-            var solution = 0;
-            for (var number = 1; number < 1000; number++)
-            {
-                if (number % 3 == 0 || number % 5 == 0)
-                {
-                    solution += number;
-                }
-            }
-
+            const int maximum = 999;
+            var solution = SumOfMultiples(3, maximum) + SumOfMultiples(5, maximum) - SumOfMultiples(15, maximum);
             return solution.ToString(CultureInfo.InvariantCulture);
+        }
+
+        private static int SumOfMultiples(int factor, int maximum)
+        {
+            var count = maximum / factor;
+            return factor * count * (count + 1) / 2;
         }
     }
 }
