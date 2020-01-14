@@ -13,7 +13,7 @@ namespace ProjectEuler.Problems
         /// <inheritdoc/>
         public string Solve()
         {
-            var previousNumber = 0;
+            var previousNumber = 1;
             var currentNumber = 1;
             var sum = 0;
             while (currentNumber <= 4000000)
