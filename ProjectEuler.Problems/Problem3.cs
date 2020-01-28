@@ -5,41 +5,28 @@
 
 namespace ProjectEuler.Problems
 {
-    using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
 
     /// <inheritdoc/>
     public class Problem3 : IProblem
     {
+        private readonly IHelper helper;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Problem3"/> class.
+        /// </summary>
+        public Problem3()
+        {
+            this.helper = new Helper();
+        }
+
         /// <inheritdoc/>
         public string Solve()
         {
             var number = 600851475143L;
-            var factors = Factorize(number);
+            var factors = this.helper.Factorize(number);
             return factors.Max().ToString(CultureInfo.InvariantCulture);
-        }
-
-        private static List<long> Factorize(long number)
-        {
-            var factors = new List<long>();
-            var factor = 2L;
-            while (number > 1L)
-            {
-                var nextNumber = number / factor;
-                var remainder = number - (nextNumber * factor);
-                if (remainder == 0L)
-                {
-                    factors.Add(factor);
-                    number = nextNumber;
-                }
-                else
-                {
-                    factor++;
-                }
-            }
-
-            return factors;
         }
     }
 }

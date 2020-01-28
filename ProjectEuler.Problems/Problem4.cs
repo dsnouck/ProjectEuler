@@ -5,7 +5,6 @@
 
 namespace ProjectEuler.Problems
 {
-    using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
@@ -13,16 +12,28 @@ namespace ProjectEuler.Problems
     /// <inheritdoc/>
     public class Problem4 : IProblem
     {
+        private readonly IHelper helper;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Problem4"/> class.
+        /// </summary>
+        public Problem4()
+        {
+            this.helper = new Helper();
+        }
+
         /// <inheritdoc/>
         public string Solve()
         {
+            const int minimum = 100;
+            const int maximum = 1000;
             var palindromes = new List<int>();
-            for (var number = 100; number < 1000; number++)
+            for (var number = minimum; number < maximum; number++)
             {
-                for (var otherNumber = number; otherNumber < 1000; otherNumber++)
+                for (var otherNumber = number; otherNumber < maximum; otherNumber++)
                 {
                     var product = number * otherNumber;
-                    if (IsPalindrome(product))
+                    if (this.helper.IsPalindrome(product))
                     {
                         palindromes.Add(product);
                     }
@@ -30,27 +41,6 @@ namespace ProjectEuler.Problems
             }
 
             return palindromes.Max().ToString(CultureInfo.InvariantCulture);
-        }
-
-        private static bool IsPalindrome(int number, int numberBase = 10)
-        {
-            var digits = Digits(number, numberBase);
-            var reversedDigits = Enumerable.Reverse(digits).ToList();
-            return digits.SequenceEqual(reversedDigits);
-        }
-
-        private static List<int> Digits(int number, int numberBase = 10)
-        {
-            var digits = new List<int>();
-            while (number > 0)
-            {
-                var rest = number / numberBase;
-                var digit = number - (numberBase * rest);
-                digits.Add(digit);
-                number = rest;
-            }
-
-            return digits;
         }
     }
 }

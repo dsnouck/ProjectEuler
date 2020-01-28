@@ -10,18 +10,24 @@ namespace ProjectEuler.Problems
     /// <inheritdoc/>
     public class Problem1 : IProblem
     {
+        private readonly IHelper helper;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Problem1"/> class.
+        /// </summary>
+        public Problem1()
+        {
+            this.helper = new Helper();
+        }
+
         /// <inheritdoc/>
         public string Solve()
         {
             const int maximum = 999;
-            var solution = SumOfMultiples(3, maximum) + SumOfMultiples(5, maximum) - SumOfMultiples(15, maximum);
+            var solution = this.helper.SumOfMultiples(3, maximum)
+                + this.helper.SumOfMultiples(5, maximum)
+                - this.helper.SumOfMultiples(15, maximum);
             return solution.ToString(CultureInfo.InvariantCulture);
-        }
-
-        private static int SumOfMultiples(int number, int maximum)
-        {
-            var count = maximum / number;
-            return number * count * (count + 1) / 2;
         }
     }
 }

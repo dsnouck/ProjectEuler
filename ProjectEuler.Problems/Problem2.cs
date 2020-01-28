@@ -13,10 +13,11 @@ namespace ProjectEuler.Problems
         /// <inheritdoc/>
         public string Solve()
         {
+            const int maximum = 4000000;
             var previousNumber = 0;
             var currentNumber = 2;
             var sum = 0;
-            while (currentNumber <= 4000000)
+            while (currentNumber <= maximum)
             {
                 sum += currentNumber;
                 var nextNumber = previousNumber + (4 * currentNumber);
