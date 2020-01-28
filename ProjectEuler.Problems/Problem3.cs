@@ -18,7 +18,7 @@ namespace ProjectEuler.Problems
             var number = 600851475143L;
             var factors = new List<long>();
             var factor = 2L;
-            while (factor <= number)
+            while (number > 1L)
             {
                 var nextNumber = number / factor;
                 var remainder = number - (nextNumber * factor);
