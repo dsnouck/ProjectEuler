@@ -16,6 +16,12 @@ namespace ProjectEuler.Problems
         public string Solve()
         {
             var number = 600851475143L;
+            var factors = Factorize(number);
+            return factors.Max().ToString(CultureInfo.InvariantCulture);
+        }
+
+        private static List<long> Factorize(long number)
+        {
             var factors = new List<long>();
             var factor = 2L;
             while (number > 1L)
@@ -33,7 +39,7 @@ namespace ProjectEuler.Problems
                 }
             }
 
-            return factors.Last().ToString(CultureInfo.InvariantCulture);
+            return factors;
         }
     }
 }
