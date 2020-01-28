@@ -27,6 +27,29 @@ namespace ProjectEuler.Problems
         }
 
         /// <inheritdoc/>
+        public List<int> Factorize(int number)
+        {
+            var factors = new List<int>();
+            var factor = 2;
+            while (number > 1)
+            {
+                var nextNumber = number / factor;
+                var remainder = number - (nextNumber * factor);
+                if (remainder == 0)
+                {
+                    factors.Add(factor);
+                    number = nextNumber;
+                }
+                else
+                {
+                    factor++;
+                }
+            }
+
+            return factors;
+        }
+
+        /// <inheritdoc/>
         public List<long> Factorize(long number)
         {
             var factors = new List<long>();

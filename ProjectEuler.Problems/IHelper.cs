@@ -25,6 +25,13 @@ namespace ProjectEuler.Problems
         /// </summary>
         /// <param name="number">The number.</param>
         /// <returns>The factors of the number.</returns>
+        List<int> Factorize(int number);
+
+        /// <summary>
+        /// Factorizes a number.
+        /// </summary>
+        /// <param name="number">The number.</param>
+        /// <returns>The factors of the number.</returns>
         List<long> Factorize(long number);
 
         /// <summary>
