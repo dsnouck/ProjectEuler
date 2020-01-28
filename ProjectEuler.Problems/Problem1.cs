@@ -18,10 +18,10 @@ namespace ProjectEuler.Problems
             return solution.ToString(CultureInfo.InvariantCulture);
         }
 
-        private static int SumOfMultiples(int factor, int maximum)
+        private static int SumOfMultiples(int number, int maximum)
         {
-            var count = maximum / factor;
-            return factor * count * (count + 1) / 2;
+            var count = maximum / number;
+            return number * count * (count + 1) / 2;
         }
     }
 }
